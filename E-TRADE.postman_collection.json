@@ -1,0 +1,1859 @@
+{
+	"info": {
+		"_postman_id": "f950dcef-cbbc-4dce-b7b7-006f048210db",
+		"name": "E*TRADE",
+		"description": "[https://developer.etrade.com/documentation](https://developer.etrade.com/documentation)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7337436"
+	},
+	"item": [
+		{
+			"name": "Market",
+			"item": [
+				{
+					"name": "Get Quotes",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/market/quote/:symbols",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"market",
+								"quote",
+								":symbols"
+							],
+							"query": [
+								{
+									"key": "detailFlag",
+									"value": null,
+									"description": "Determines the market fields returned from a quote request. [ALL, FUNDAMENTAL, INTRADAY, OPTIONS, WEEK_52, MF_DETAIL]",
+									"disabled": true
+								},
+								{
+									"key": "requireEarningsDate",
+									"value": null,
+									"description": "If value is true, then nextEarningDate will be provided in the output. If value is false or if the field is not passed, nextEarningDate will be returned with no value.",
+									"disabled": true
+								},
+								{
+									"key": "overrideSymbolCount",
+									"value": null,
+									"description": "If value is true, then symbolList may contain a maximum of 50 symbols; otherwise, symbolList can only contain 25 symbols.",
+									"disabled": true
+								},
+								{
+									"key": "skipMiniOptionsCheck",
+									"value": null,
+									"description": "If value is true, no call is made to the service to check whether the symbol has mini options. If value is false or if the field is not specified, a service call is made to check if the symbol has mini options.",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "symbols",
+									"value": "GOOG",
+									"description": "One or more (comma-separated) symbols for equities or options, up to a maximum of 25. Symbols for equities are simple, for example, GOOG. Symbols for options are more complex, consisting of six elements separated by colons, in this format: underlier:year:month:day:optionType:strikePrice."
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "Look Up Product",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/market/lookup/:search",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"market",
+								"lookup",
+								":search"
+							],
+							"variable": [
+								{
+									"key": "search",
+									"value": "",
+									"description": "The search request"
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-market-v1.html#/definition/Lookup](https://apisb.etrade.com/docs/api/market/api-market-v1.html#/definition/Lookup)\n\nThis API returns a list of securities of a specified type (e.g., equity stock) based on a full or partial match of any part of the company name. For instance, a search for \"jones\" returns a list of securities associated with \"Jones Soda Co\", \"Stella Jones Inc\", and many others. The list contains the company name, the exchange that lists the security, the security type, and the symbol, for as many matches as are found. The result may include some unexpected matches, because the search includes more than just the display version of the company name. For instance, searching on \"etrade\" returns securities for \"E TRADE\" - notice the space in the name. This API is for searching on the company name, not a security symbol. It's commonly used to look up a symbol based on the company name, e.g., \"What is the symbol for Google stock?\". To look up company information based on a symbol, or to find detailed information on a security, use the quote API."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Option Chains",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/market/optionchains?symbol=GOOG",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"market",
+								"optionchains"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "GOOG",
+									"description": "The market symbol for the instrument."
+								},
+								{
+									"key": "expiryYear",
+									"value": "",
+									"description": "Indicates the expiry year corresponding to which the optionchain needs to be fetched (required: no)",
+									"disabled": true
+								},
+								{
+									"key": "expiryMonth",
+									"value": "",
+									"description": "Indicates the expiry month corresponding to which the optionchain needs to be fetched (required: no)",
+									"disabled": true
+								},
+								{
+									"key": "expiryDay",
+									"value": "",
+									"description": "Indicates the expiry day corresponding to which the optionchain needs to be fetched (required:no)",
+									"disabled": true
+								},
+								{
+									"key": "strikePriceNear",
+									"value": "",
+									"description": "The optionchians fetched will have strike price nearer to this value (required: no)",
+									"disabled": true
+								},
+								{
+									"key": "noOfStrikes",
+									"value": "",
+									"description": "Indicates number of strikes for which the optionchain needs to be fetched (required: no)",
+									"disabled": true
+								},
+								{
+									"key": "includeWeekly",
+									"value": "",
+									"description": "The include weekly options request. Default: false. [true, false]",
+									"disabled": true
+								},
+								{
+									"key": "skipAdjusted",
+									"value": "",
+									"description": "The skip adjusted request. Default: true. [true, false]",
+									"disabled": true
+								},
+								{
+									"key": "optionCategory",
+									"value": "",
+									"description": "The option category. Default: STANDARD. [STANDARD, ALL, MINI]",
+									"disabled": true
+								},
+								{
+									"key": "chainType",
+									"value": "",
+									"description": "The type of option chain. Default: CALLPUT. [CALL, PUT, CALLPUT]",
+									"disabled": true
+								},
+								{
+									"key": "priceType",
+									"value": "ALL",
+									"description": "The price type. Default: ATNM. [ATNM, ALL]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Option Expire Dates",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/market/optionexpiredate?symbol=GOOG",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"market",
+								"optionexpiredate"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "GOOG",
+									"description": "The symbol in the request"
+								},
+								{
+									"key": "expiryType",
+									"value": "",
+									"description": "Expiration type of the option",
+									"disabled": true
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-market-v1.html#/definition/getOptionExpireDates](https://apisb.etrade.com/docs/api/market/api-market-v1.html#/definition/getOptionExpireDates)\n\nReturns a list of dates suitable for structuring an option table display. The dates are used to group option data (returned by the optionchains method) for a specified underlier, creating a table display."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Get Request Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200)\r",
+									"{\r",
+									"    const response = pm.response.text();\r",
+									"\r",
+									"    const json = response.split(\"&\").reduce((obj, pair) => {\r",
+									"        const [key, value] = pair.split(\"=\");\r",
+									"        obj[key] = \r",
+									"            key === \"oauth_callback_confirmed\" \r",
+									"            ? value === \"true\" \r",
+									"            : decodeURIComponent(value);\r",
+									"        return obj;\r",
+									"    }, {});\r",
+									"\r",
+									"    pm.environment.set(\"oauth_token\", json.oauth_token);\r",
+									"    pm.environment.set(\"oauth_token_secret\", json.oauth_token_secret);\r",
+									"    \r",
+									"    console.log(`1) Paste this URL into your browser: https://us.etrade.com/e/t/etws/authorize?key=${pm.environment.get(\"SandboxApiKey\")}&token=${json.oauth_token}`)\r",
+									"    console.log(`2) Accept the Terms that are presented, and then copy the 6-digit code.`)\r",
+									"    console.log(`3) Open \"Get Access Token\", open \"Authorization\" tab, and paste the 6-digit code in the \"Verifier\" attribute`)\r",
+									"    console.log(`4) Call \"Get Access Token\" to refresh your oauth_token and oauth_secret`)\r",
+									"    console.log(`5) Now you can call E*Trade API endpoints in this collection.`)\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/oauth/request_token",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"oauth",
+								"request_token"
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/authorization/request_token.html#/definition/GetRequestToken](https://apisb.etrade.com/docs/api/authorization/request_token.html#/definition/GetRequestToken)\n\nThis API returns a temporary request token that begins the OAuth process. The request token must accompany the user to the authorization page, where the user will grant your application limited access to the account. The token expires after five minutes."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200){\r",
+									"    const response = pm.response.text();\r",
+									"\r",
+									"    const json = response.split(\"&\").reduce((obj, pair) => {\r",
+									"        const [key, value] = pair.split(\"=\");\r",
+									"        obj[key] = decodeURIComponent(value);\r",
+									"        return obj;\r",
+									"    }, {});\r",
+									"\r",
+									"    pm.environment.set(\"oauth_token\", json.oauth_token);\r",
+									"    pm.environment.set(\"oauth_token_secret\", json.oauth_token_secret);\r",
+									"    pm.environment.set(\"VerificationCode\", pm.request.url.query.get(\"oauth_verifier\"));\r",
+									"\r",
+									"    console.log(json);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "XNWMI",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/oauth/access_token",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"oauth",
+								"access_token"
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/authorization/get_access_token.html#/definition/AccessToken](https://apisb.etrade.com/docs/api/authorization/get_access_token.html#/definition/AccessToken)\n\nThis method returns an access token, which confirms that the user has authorized the application to access user data. All calls to the E\\*TRADE API (e.g., accountlist, placeequityorder, etc.) must include this access token along with the consumer key, timestamp, nonce, signature method, and signature. This can be done in the query string, but is typically done in the HTTP header. By default, the access token expires at the end of the current calendar day, US Eastern time. Once the token has expired, no requests will be processed for that token until the OAuth process is repeated - i.e., the user must log in again and the application must secure a new access token. During the current day, if the application does not make any requests for two hours, the access token is inactivated. In this inactive state, the access token is not valid for authorizing requests. It must be reactivated using the Renew Access Token API."
+					},
+					"response": []
+				},
+				{
+					"name": "Renew Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "{{VerificationCode}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/oauth/renew_access_token",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"oauth",
+								"renew_access_token"
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/authorization/renew_access_token.html#/definition/RenewAccessToken](https://apisb.etrade.com/docs/api/authorization/renew_access_token.html#/definition/RenewAccessToken)\n\nIf the application does not make any requests for two hours, the access token is inactivated. In this inactive state, the access token is not valid for authorizing requests. It must be reactivated using the Renew Access Token API. By default the access token expires at midnight US Eastern time. Once the token has expired, no further requests will be processed until the user logs in again and the application secures a new access token."
+					},
+					"response": []
+				},
+				{
+					"name": "Revoke Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/oauth/revoke_access_token",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"oauth",
+								"revoke_access_token"
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/authorization/revoke_access_token.html#/definition/RevokeAccessToken](https://apisb.etrade.com/docs/api/authorization/revoke_access_token.html#/definition/RevokeAccessToken)\n\nThis method revokes an access token that was granted for the consumer key. Once the token is revoked, it no longer grants access to E\\*TRADE data. We strongly recommend revoking the access token once your application no longer needs access to the user’s E\\*TRADE account. In the event of a security compromise, a revoked token is useless to a malicious entity."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alerts",
+			"item": [
+				{
+					"name": "List Alerts",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/user/alerts",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"user",
+								"alerts"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "",
+									"description": "The alert count. By default it returns 25. Max values that can be returned: 300.",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "",
+									"description": "The alert category. By default it will return STOCK and ACCOUNT. [STOCK, ACCOUNT]",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "The alert status. By default it will return READ and UNREAD. [READ, UNREAD, DELETED]",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "",
+									"description": "Sorting is done based on the createDate. [ASC, DESC]",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "",
+									"description": "The alert search. Search is done based on the subject.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "List Alert Details",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/user/alerts/:id",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"user",
+								"alerts",
+								":id"
+							],
+							"query": [
+								{
+									"key": "htmlTags",
+									"value": "true",
+									"description": "The HTML tags on the alert. By default it is false. If set to true, it returns the alert details msgText with html tags.",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "The alert ID value. Alert id whose details are needed"
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Alert",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/user/alerts/:alert_id_list",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"user",
+								"alerts",
+								":alert_id_list"
+							],
+							"variable": [
+								{
+									"key": "alert_id_list",
+									"value": "",
+									"description": "Comma separated alertId list"
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "List Orders",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/accounts/:accountIdkey/orders",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"accounts",
+								":accountIdkey",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "marker",
+									"value": null,
+									"description": "Specifies the desired starting point of the set of items to return. Used for paging as described in the Notes below.",
+									"disabled": true
+								},
+								{
+									"key": "count",
+									"value": null,
+									"description": "Number of transactions to return in the response. If not specified, defaults to 25 and maximum count is 100. Used for paging as described in the Notes below.",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": null,
+									"description": "The status [OPEN, EXECUTED, CANCELLED, INDIVIDUAL_FILLS, CANCEL_REQUESTED, EXPIRED, REJECTED]",
+									"disabled": true
+								},
+								{
+									"key": "fromDate",
+									"value": null,
+									"description": "The earliest date to include in the date range, formatted as MMDDYYYY. History is available for two years. Both fromDate and toDate should be provided, toDate should be greater than fromDate.",
+									"disabled": true
+								},
+								{
+									"key": "toDate",
+									"value": null,
+									"description": "The latest date to include in the date range, formatted as MMDDYYYY. Both fromDate and toDate should be provided, toDate should be greater than fromDate.",
+									"disabled": true
+								},
+								{
+									"key": "symbol",
+									"value": null,
+									"description": "The market symbol for the security being bought or sold. API supports only 25 symbols seperated by delimiter \" , \".",
+									"disabled": true
+								},
+								{
+									"key": "securityType",
+									"value": null,
+									"description": "The security type [EQ, OPTN, MF, MMF]",
+									"disabled": true
+								},
+								{
+									"key": "transactionType",
+									"value": null,
+									"description": "Type of transaction [ATNM, BUY, SELL, SELL_SHORT, BUY_TO_COVER, MF_EXCHANGE]",
+									"disabled": true
+								},
+								{
+									"key": "marketSession",
+									"value": null,
+									"description": "Session in which the equity order will be place [REGULAR, EXTENDED]",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "accountIdkey",
+									"value": "",
+									"description": "The unique account key. Retrievable by calling the List Accounts API."
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "Preview Order",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"PreviewOrderRequest\": {\r\n    \"orderType\": \"EQ\",\r\n    \"clientOrderId\": \"abc123456\",\r\n    \"Order\": [\r\n      {\r\n        \"allOrNone\": \"false\",\r\n        \"priceType\": \"LIMIT\",\r\n        \"orderTerm\": \"GOOD_FOR_DAY\",\r\n        \"marketSession\": \"REGULAR\",\r\n        \"stopPrice\": \"\",\r\n        \"limitPrice\": \"150.00\",\r\n        \"Instrument\": [\r\n          {\r\n            \"Product\": {\r\n              \"securityType\": \"EQ\",\r\n              \"symbol\": \"AAPL\"\r\n            },\r\n            \"orderAction\": \"BUY\",\r\n            \"quantityType\": \"QUANTITY\",\r\n            \"quantity\": \"10\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/accounts/:accountIdkey/orders/preview",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"accounts",
+								":accountIdkey",
+								"orders",
+								"preview"
+							],
+							"variable": [
+								{
+									"key": "accountIdkey",
+									"value": "",
+									"description": "The unique account key. Retrievable by calling the List Accounts API."
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "List Accounts",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/accounts/list",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"accounts",
+								"list"
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balances",
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/accounts/:accountIdKey/balance",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"accounts",
+								":accountIdKey",
+								"balance"
+							],
+							"query": [
+								{
+									"key": "accountType",
+									"value": null,
+									"description": "The registered account type [AMMCHK, ARO, BCHK, BENFIRA, BENFROTHIRA, BENF_ESTATE_IRA, BENF_MINOR_IRA, BENF_ROTH_ESTATE_IRA, BENF_ROTH_MINOR_IRA, BENF_ROTH_TRUST_IRA, BENF_TRUST_IRA, BRKCD, BROKER, CASH, C_CORP, CONTRIBUTORY, COVERDELL_ESA, CONVERSION_ROTH_IRA, CREDITCARD, COMM_PROP, CONSERVATOR, CORPORATION, CSA, CUSTODIAL, DVP, ESTATE, EMPCHK, EMPMMCA, ETCHK, ETMMCHK, HEIL, HELOC, INDCHK, INDIVIDUAL, INDIVIDUAL_K, INVCLUB, INVCLUB_C_CORP, INVCLUB_LLC_C_CORP, INVCLUB_LLC_PARTNERSHIP, INVCLUB_LLC_S_CORP, INVCLUB_PARTNERSHIP, INVCLUB_S_CORP, INVCLUB_TRUST, IRA_ROLLOVER, JOINT, JTTEN, JTWROS, LLC_C_CORP, LLC_PARTNERSHIP, LLC_S_CORP, LLP, LLP_C_CORP, LLP_S_CORP, IRA, IRACD, MONEY_PURCHASE, MARGIN, MRCHK, MUTUAL_FUND, NONCUSTODIAL, NON_PROFIT, OTHER, PARTNER, PARTNERSHIP, PARTNERSHIP_C_CORP, PARTNERSHIP_S_CORP, PDT_ACCOUNT, PM_ACCOUNT, PREFCD, PREFIRACD, PROFIT_SHARING, PROPRIETARY, REGCD, ROTHIRA, ROTH_INDIVIDUAL_K, ROTH_IRA_MINORS, SARSEPIRA, S_CORP, SEPIRA, SIMPLE_IRA, TIC, TRD_IRA_MINORS, TRUST, VARCD, VARIRACD]",
+									"disabled": true
+								},
+								{
+									"key": "instType",
+									"value": null,
+									"description": "The account institution type for which the balance or information is requested. [BROKERAGE]",
+									"disabled": true
+								},
+								{
+									"key": "realTimeNAV",
+									"value": null,
+									"description": "Default is false. If true, fetches real time balance",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "accountIdKey",
+									"value": "",
+									"description": "The unique account key. Retrievable by calling the List Accounts API."
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "List Transactions",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/accounts/:accountIdKey/transactions",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"accounts",
+								":accountIdKey",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "",
+									"description": "The earliest date to include in the date range, formatted as MMDDYYYY. History is available for two years.",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": null,
+									"description": "The latest date to include in the date range, formatted as MMDDYYYY",
+									"disabled": true
+								},
+								{
+									"key": "sortOrder",
+									"value": null,
+									"description": "The sort order request [ASC, DESC]",
+									"disabled": true
+								},
+								{
+									"key": "marker",
+									"value": null,
+									"description": "Specifies the desired starting point of the set of items to return. Used for paging as described in the Notes below.",
+									"disabled": true
+								},
+								{
+									"key": "count",
+									"value": null,
+									"description": "Number of transactions to return in the response. If not specified, defaults to 50. Used for paging as described in the Notes below.",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "accountIdKey",
+									"value": "",
+									"description": "The unique account key. Retrievable by calling the List Accounts API."
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "List Transaction Details",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/accounts/:accountIdKey/transactions/:tranid",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"accounts",
+								":accountIdKey",
+								"transactions",
+								":tranid"
+							],
+							"query": [
+								{
+									"key": "storeId",
+									"value": null,
+									"description": "Storage location for older transactions",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "accountIdKey",
+									"value": "",
+									"description": "The unique account key. Retrievable by calling the List Accounts API."
+								},
+								{
+									"key": "tranid",
+									"value": "",
+									"description": "transactionId"
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				},
+				{
+					"name": "View Portfolio",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "verifier",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{oauth_token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{oauth_token}}",
+									"type": "string"
+								},
+								{
+									"key": "callback",
+									"value": "oob",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{SandboxSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{SandboxApiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseApiUri}}/{{ApiVersion}}/accounts/:accountIdKey/portfolio?count&sortBy&sortOrder&pageNumber&marketSession&totalsRequired&lotsRequired&view",
+							"host": [
+								"{{BaseApiUri}}"
+							],
+							"path": [
+								"{{ApiVersion}}",
+								"accounts",
+								":accountIdKey",
+								"portfolio"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": null,
+									"description": "The number of positions to return in the response. If not specified, defaults to 50. Used for paging as described in the Notes below."
+								},
+								{
+									"key": "sortBy",
+									"value": null,
+									"description": "The sort by query. Sorting done based on the column specified in the query paramater. [SYMBOL, TYPE_NAME, EXCHANGE_NAME, CURRENCY, QUANTITY, LONG_OR_SHORT, DATE_ACQUIRED, PRICEPAID, TOTAL_GAIN, TOTAL_GAIN_PCT, MARKET_VALUE, BI, ASK, PRICE_CHANGE, PRICE_CHANGE_PCT, VOLUME, WEEK_52_HIGH, WEEK_52_LOW, EPS, PE_RATIO, OPTION_TYPE, STRIKE_PRICE, PREMIUM, EXPIRATION, DAYS_GAIN, COMMISSION, MARKETCAP, PREV_CLOSE, OPEN, DAYS_RANGE, TOTAL_COST, DAYS_GAIN_PCT, PCT_OF_PORTFOLIO, LAST_TRADE_TIME, BASE_SYMBOL_PRICE, WEEK_52_RANGE, LAST_TRADE, SYMBOL_DESC, BID_SIZE, ASK_SIZE, OTHER_FEES, HELD_AS, OPTION_MULTIPLIER, DELIVERABLES, COST_PERSHARE, DIVIDEND, DIV_YIELD, DIV_PAY_DATE, EST_EARN, EX_DIV_DATE, TEN_DAY_AVG_VOL, BETA, BID_ASK_SPREAD, MARGINABLE, DELTA_52WK_HI, DELTA_52WK_LOW, PERF_1MON, ANNUAL_DIV, PERF_12MON, PERF_3MON, PERF_6MON, PRE_DAY_VOL, SV_1MON_AVG, SV_10DAY_AVG, SV_20DAY_AVG, SV_2MON_AVG, SV_3MON_AVG, SV_4MON_AVG, SV_6MON_AVG, DELTA, GAMMA, IV_PCT, THETA, VEGA, ADJ_NONADJ_FLAG, DAYS_EXPIRATION, OPEN_INTEREST, INSTRINIC_VALUE, RHO, TYPE_CODE, DISPLAY_SYMBOL, AFTER_HOURS_PCTCHANGE, PRE_MARKET_PCTCHANGE, EXPAND_COLLAPSE_FLAG]"
+								},
+								{
+									"key": "sortOrder",
+									"value": null,
+									"description": "The sort order query. Default: DESC. [ASC, DESC]"
+								},
+								{
+									"key": "pageNumber",
+									"value": null,
+									"description": "The specific page that in the list that is to be returned. Each page has a default count of 50 positions."
+								},
+								{
+									"key": "marketSession",
+									"value": null,
+									"description": "The market session. Default: REGULAR [REGULAR, EXTENDED]"
+								},
+								{
+									"key": "totalsRequired",
+									"value": null,
+									"description": "It gives the total values of the portfolio. Default: false."
+								},
+								{
+									"key": "lotsRequired",
+									"value": null,
+									"description": "It gives position lots for positions. Default: false."
+								},
+								{
+									"key": "view",
+									"value": null,
+									"description": "The view query. Default: Quick. [PERFORMANCE, FUNDAMENTAL, OPTIONSWATCH, QUICK, COMPLETE]"
+								}
+							],
+							"variable": [
+								{
+									"key": "accountIdKey",
+									"value": "",
+									"description": "The unique account key. Retrievable by calling the List Accounts API."
+								}
+							]
+						},
+						"description": "[https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes](https://apisb.etrade.com/docs/api/market/api-quote-v1.html#/definition/getQuotes)\n\nThis API returns detailed quote information for one or more specified securities. An optional flag specifies one of five pre-configured field sets to return: fundamentals, intraday activity, options, a 52-week display, or all available details (the default). Developers can select the response that most closely fits their needs to minimize data size, processing time, and network traffic. To receive access to real-time market data, you would need to sign the market data agreement and use the API through the OAuth process. Otherwise, you will receive delayed market data."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
