@@ -8,7 +8,10 @@ Postman collection of E*Trade's v1 Developer API (https://apisb.etrade.com/docs/
 I couldn't find a pre-existing E*TRADE Postman collection, so I made this one.  Here are some things you should know now before you get started:
 
 1. The E*TRADE developer API  (as of April 2025) still uses Oauth 1.0; therefore, there's a requirement for an end-user to explicitly approve access (https://oauth.net/core/1.0/#auth_step2).
-   - If you intend to do automation that automatically manages the token, then you'll need to find a way to scrape a 6-digit token from the E*TRADE website that is required as part of acquiring an oauth token.
+   - If you intend to do automation that automatically manages the token, then you will need to implement a mechanism to accept the end user terms before the 6 digit code is generated.
+   - You will have 2 options to retrieve the 6 digit code:
+     - If you go through the process to [register a callback (see Callbacks)](https://developer.etrade.com/getting-started/developer-guides) then it will be returned as the `oauth_verifier=<code>` query param.
+     - Otherwise, you will have to manually copy/paste the presented value (which is how this Postman collection works) 
 3. The [Access Token](https://apisb.etrade.com/docs/api/authorization/get_access_token.html) has some expiry rules
    - Expires at the "end of the day" which is 12:00am Eastern Standard Time 
    - Expires after 2 hours of no use.
@@ -51,4 +54,9 @@ If you already have your Live Keys, you do not need to complete any of the below
 3. Open the `E*TRADE` collection
 4. Execute `Get Request Token`
 6. Follow the steps provided in the `Console`
-7. You can now call the E*TRADE API endpoints
+   - Navigate to `https://us.etrade.com/e/t/etws/authorize?key=<SandboxApiKey>&token=<OauthTokenFromGetRequestToken>`
+   - Accept the Terms (as required by Oauth1 flow)
+   - Copy the 6 digit oauth verifier code
+   - Open `Get Access Token`, open `Authorization` tab, and paste the 6-digit code in the `Verifier` attribute
+   - Call `Get Access Token` to refresh your `oauth_token` and `oauth_secret` in the E*TRADE Environment
+8. You can now call the E*TRADE API endpoints
